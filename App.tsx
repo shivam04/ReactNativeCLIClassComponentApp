@@ -7,19 +7,25 @@
 
 import { Component } from "react";
 import { Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 class App extends Component {
 
   constructor(props: any) {
     super(props);
+    // Initialize the state object with an empty object
+    this.state = {}
   }
 
   render() {
     return (
-      <SafeAreaView>
-        <Text>Hello World!</Text>
-      </SafeAreaView>
+      <SafeAreaProvider>
+        <SafeAreaView>
+          <Text onPress={() => this.setState({ name: 'Shivam' })}>
+            Hello, {this.state?.name}!
+          </Text>
+        </SafeAreaView>
+      </SafeAreaProvider>
     )
   }
 }
